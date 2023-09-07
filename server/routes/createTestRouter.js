@@ -9,7 +9,7 @@ require('dotenv').config();
 const db = require('../db');
 
 router.post('', async (req, res) => {
-    const { testName, questions } = req.body.testData;
+    const { testName, questions,description } = req.body.testData;
     const token = req.body.token;
 
     const decoded = await jwt.verify(token, process.env.JWT_SECRET);
@@ -20,6 +20,7 @@ router.post('', async (req, res) => {
 
     const newTest = new Test({
         testName: testName,
+        description:description,
         authorName,
         createdBy: userId,
         questions: questions.map((question) => ({

@@ -83,12 +83,12 @@
 
         &::-webkit-scrollbar {
             width: 10px;
-            
+
         }
 
         &::-webkit-scrollbar-track {
             background-color: #f1f1f1;
-            
+
             border-radius: 5px;
         }
 
@@ -111,6 +111,12 @@
             background-color: #e5e5e5;
             padding: 10px;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            .right{
+                margin-left: 50px;
+                font-size: 20px;
+            }
 
             &:hover {
                 background-color: #949494;

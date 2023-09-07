@@ -7,8 +7,13 @@ function Test({ test }) {
 
     return (
         <div onClick={clickHandler} className="test">
-            <h2>{test.testName}</h2>
-            <p>Автор: {test.authorName}</p>
+            <div className="left">
+                <h2>{test.testName}</h2>
+                <p>Автор: {test.authorName}</p>
+            </div>
+            <div className="right">
+                <p>{test.description}</p>
+            </div>
         </div>
     )
 }

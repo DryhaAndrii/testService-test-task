@@ -7,10 +7,11 @@ const clientUrl = process.env.REACT_APP_CLIENT_URL;
 const apiUrl = process.env.REACT_APP_API_URL;
 
 function TestCreating() {
-    const { setMessage, setLoading } = useStore();
+    const { setMessage, setLoading,setIsGoBack } = useStore();
     const [testData, setTestData] = useState({
         testName: '',
         questions: [],
+        description: ''
     });
 
     const addQuestion = () => {
@@ -52,6 +53,16 @@ function TestCreating() {
             });
         }
     };
+    const handleTestDescriptionChange = (e) => {
+        if (e.target.value.length > 50) {
+            setMessage('Too many characters');
+        } else {
+            setTestData({
+                ...testData,
+                description: e.target.value,
+            });
+        }
+    };
 
     const handleSubmit = () => {
         console.log(testData);
@@ -64,7 +75,7 @@ function TestCreating() {
             .then((response) => {
                 setLoading(false);
                 setMessage(response.data.message);
-                setTimeout(() => { window.location.href = `${clientUrl}`; }, 500);
+                setIsGoBack(true);
             })
             .catch((error) => {
                 console.error('Server error:', error);
@@ -79,6 +90,11 @@ function TestCreating() {
                 placeholder="Test Name"
                 value={testData.testName}
                 onChange={handleTestNameChange}
+            /><input
+                type="text"
+                placeholder="Test description"
+                value={testData.description}
+                onChange={handleTestDescriptionChange}
             />
             {testData.questions.map((question, questionIndex) => (
                 <Question question={question}

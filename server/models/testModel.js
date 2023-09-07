@@ -12,6 +12,7 @@ const questionSchema = new mongoose.Schema({
 
 const testSchema = new mongoose.Schema({
     testName: String,
+    description:String,
     questions: [questionSchema],
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

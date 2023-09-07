@@ -7,12 +7,29 @@ const apiUrl = process.env.REACT_APP_API_URL;
 const clientUrl = process.env.REACT_APP_CLIENT_URL;
 
 function Update({ testObject }) {
-    const { setMessage } = useStore()
+    const { setMessage, setIsGoBack, setLoading } = useStore()
+    const [testName, setTestName] = useState(testObject.testName);
+    const [description, setDescription] = useState(testObject.description);
     const [questions, setQuestions] = useState(
         testObject.questions.map((question) => ({
             ...question,
         }))
     );
+    const handleTestNameChange = (e) => {
+        if (e.target.value.length > 50) {
+            setMessage('Too many characters')
+        } else {
+            setTestName(e.target.value);
+        }
+    };
+
+    const handleDescriptionChange = (e) => {
+        if (e.target.value.length > 50) {
+            setMessage('Too many characters')
+        } else {
+            setDescription(e.target.value);
+        }
+    };
     const handleQuestionChange = (index, e) => {
         if (e.target.value.length > 50) {
             setMessage('Too many characters');
@@ -54,20 +71,24 @@ function Update({ testObject }) {
         try {
             const requestData = {
                 testId: testObject._id,
+                testName: testName,
+                description: description,
                 newQuestions: questions,
             };
-
+            setLoading(true);
             const response = await axios.post(`${apiUrl}test/updateTestById`, requestData);
 
             if (response.status === 200) {
-                setMessage('Questions updated successfully');
-                setTimeout(() => { window.location.href = `${clientUrl}testsDetails/`; }, 500);
-                console.log('Questions updated successfully');
+                setLoading(false);
+                setMessage('Test updated successfully');
+                setIsGoBack(true);
+                console.log('Test updated successfully');
             } else {
-                console.error('Failed to update questions');
+                setLoading(false);
+                console.error('Failed to update test');
             }
         } catch (error) {
-            console.error('An error occurred while updating questions:', error);
+            console.error('An error occurred while updating test:', error);
         }
     };
     const handleDeleteQuestion = (questionIndex) => {
@@ -93,26 +114,69 @@ function Update({ testObject }) {
             setQuestions([...questions, newQuestion]);
         }
     };
+    const deleteTest = async () => {
+        try {
+            const requestData = {
+                testId: testObject._id,
+                isDelete: true
+            };
+            setLoading(true);
+            const response = await axios.post(`${apiUrl}test/updateTestById`, requestData);
+
+            if (response.status === 200) {
+                setLoading(false);
+                setMessage(`Test deleted`);
+                setIsGoBack(true);
+            } else {
+                setLoading(false);
+                console.error('Failed to delete questions');
+            }
+        } catch (error) {
+            console.error('An error occurred while deleting questions:', error);
+        }
+    }
 
     return (
-        <div className="update">
-            {questions.map((question, questionIndex) => (
-                <Question
-                    key={questionIndex}
-                    questionIndex={questionIndex}
-                    question={question}
-                    handleQuestionChange={handleQuestionChange}
-                    handleAnswerChange={handleAnswerChange}
-                    handleCheckboxChange={handleCheckboxChange}
-                    handleDeleteQuestion={handleDeleteQuestion}
+        <>
+            <div className="inputs">
+                <input
+                    className="testNameInput"
+                    type="text"
+                    placeholder="Test Name"
+                    value={testName}
+                    onChange={handleTestNameChange}
                 />
-            ))}
-            <div className="buttons">
-                <button onClick={handleSave}>Save</button>
-                <button onClick={handleAddQuestion}>Add question</button>
+
+                <input
+                    className="descriptionInput"
+                    placeholder="Description"
+                    value={description}
+                    onChange={handleDescriptionChange}
+                />
+            </div>
+            <div className="update">
+
+                {questions.map((question, questionIndex) => (
+                    <Question
+                        key={questionIndex}
+                        questionIndex={questionIndex}
+                        question={question}
+                        handleQuestionChange={handleQuestionChange}
+                        handleAnswerChange={handleAnswerChange}
+                        handleCheckboxChange={handleCheckboxChange}
+                        handleDeleteQuestion={handleDeleteQuestion}
+                    />
+                ))}
+                <div className="buttons">
+                    <button onClick={handleSave}>Save</button>
+                    <button onClick={handleAddQuestion}>Add question</button>
+                    <button onClick={deleteTest}>Delete test</button>
+                </div>
+
             </div>
 
-        </div>
+        </>
+
     );
 }
 
