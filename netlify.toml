@@ -1,0 +1,10 @@
+[build]
+  base = "client" # Определите базовую директорию для сборки
+  publish = "client/build" # Определите директорию, в которую будут развернуты файлы сборки
+
+[build.environment]
+  REACT_APP_API_URL = "https://testserviceserver.onrender.com/api/" # Установите переменные окружения для сборки
+  REACT_APP_CLIENT_URL = "http://localhost:3000/"
+
+[build.command]
+  command = "npm run build" # Команда сборки проекта
