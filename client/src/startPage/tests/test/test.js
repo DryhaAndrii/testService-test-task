@@ -1,8 +1,8 @@
-
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
 function Test({ test }) {
 
     function clickHandler() {
-        window.location.href = `http://localhost:3000/test/${test._id}`;
+        window.location.href = `${clientUrl}test/${test._id}`;
     }
 
     return (

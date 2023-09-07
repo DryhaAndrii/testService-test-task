@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import useStore from '../../store';
 import axios from 'axios';
 
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function LoginForm() {
     const { setMessage, setLoading } = useStore();
     const [formData, setFormData] = useState({
@@ -26,13 +29,13 @@ function LoginForm() {
             const data = { login, password };
 
             setLoading(true);
-            axios.post('http://localhost:3001/api/login', data)
+            axios.post(`${apiUrl}login`, data)
                 .then((response) => {
                     const data = response.data;
                     if (data.token) {
                         localStorage.setItem('token', data.token);
 
-                        window.location.href = 'http://localhost:3000/';
+                        window.location.href = `${clientUrl}`;
                     } else {
                         setMessage(data.message);
                         setLoading(false);

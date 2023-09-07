@@ -13,10 +13,13 @@ import TestPassingPage from './testPassingPage/testPassingPage';
 import TestsDetailsPage from './testsDetailsPage/testsDetailsPage';
 import TestDetails from './testDetails/testDetails';
 
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function App() {
   const { message, loading, setMessage, setUserInfo, setLoading } = useStore();
   useEffect(() => {
-
+    console.log(clientUrl, apiUrl);
     getUserData();
 
   }, [])
@@ -29,7 +32,7 @@ function App() {
       console.log(info.message);
     } else if (info.message === 'Token is not valid') {
       setMessage('Authorization has expired, you need to log in again');
-      window.location.href = 'http://localhost:3000';
+      window.location.href = `${clientUrl}`;
       localStorage.removeItem('token');
     } else {
       setUserInfo(info);

@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Question from "./question";
 import useStore from "../../store";
 import axios from "axios";
+
+const apiUrl = process.env.REACT_APP_API_URL;
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
+
 function Update({ testObject }) {
     const { setMessage } = useStore()
     const [questions, setQuestions] = useState(
@@ -53,11 +57,11 @@ function Update({ testObject }) {
                 newQuestions: questions,
             };
 
-            const response = await axios.post('http://localhost:3001/api/test/updateTestById', requestData);
+            const response = await axios.post(`${apiUrl}test/updateTestById`, requestData);
 
             if (response.status === 200) {
                 setMessage('Questions updated successfully');
-                setTimeout(() => { window.location.href = 'http://localhost:3000/testsDetails/'; }, 500);
+                setTimeout(() => { window.location.href = `${clientUrl}testsDetails/`; }, 500);
                 console.log('Questions updated successfully');
             } else {
                 console.error('Failed to update questions');

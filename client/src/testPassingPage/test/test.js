@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import useStore from '../../store';
 import Question from './question';
+const apiUrl = process.env.REACT_APP_API_URL;
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
 function Test({ test, id }) {
     const { setLoading, setMessage } = useStore();
     const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -69,11 +71,11 @@ function Test({ test, id }) {
         };
         setLoading(true);
         axios
-            .post('http://localhost:3001/api/test/saveTestResultsById', postData)
+            .post(`${apiUrl}test/saveTestResultsById`, postData)
             .then((response) => {
                 setLoading(false);
                 setMessage(`${response.data.message} Your score is ${score}`);
-                setTimeout(() => { window.location.href = 'http://localhost:3000'; }, 1000);
+                setTimeout(() => { window.location.href = `${clientUrl}`; }, 1000);
                 clearInterval(intervalId);
             })
             .catch((error) => {

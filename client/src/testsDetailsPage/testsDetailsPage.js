@@ -4,13 +4,14 @@ import { getTestsByUserId } from '../helpers';
 import useStore from '../store';
 import Tests from './tests/tests';
 import Header from './header/header';
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
 function TestsDetailsPage() {
     const { setLoading, setMessage } = useStore();
     const [tests, setTests] = useState([]);
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = 'http://localhost:3000';
+            window.location.href = `${clientUrl}`;
         } else {
             fetchTests();
         }

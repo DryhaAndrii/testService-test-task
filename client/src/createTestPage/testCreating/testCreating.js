@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import axios from "axios";
 import Question from "./question/question";
 
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function TestCreating() {
     const { setMessage, setLoading } = useStore();
     const [testData, setTestData] = useState({
@@ -31,7 +34,7 @@ function TestCreating() {
     };
     const handleDeleteQuestion = (questionIndex) => {
         const updatedQuestions = [...testData.questions];
-        updatedQuestions.splice(questionIndex, 1); 
+        updatedQuestions.splice(questionIndex, 1);
 
         setTestData({
             ...testData,
@@ -53,15 +56,15 @@ function TestCreating() {
     const handleSubmit = () => {
         console.log(testData);
         const token = localStorage.getItem('token');
-        const apiUrl = 'http://localhost:3001/api/test/create';
+        const apiiUrl = `${apiUrl}test/create`;
 
         setLoading(true);
         axios
-            .post(apiUrl, { testData, token })
+            .post(apiiUrl, { testData, token })
             .then((response) => {
                 setLoading(false);
                 setMessage(response.data.message);
-                setTimeout(() => { window.location.href = 'http://localhost:3000'; }, 500);
+                setTimeout(() => { window.location.href = `${clientUrl}`; }, 500);
             })
             .catch((error) => {
                 console.error('Server error:', error);

@@ -4,12 +4,14 @@ import CreateTestPageHeader from './header/createTestPageHeader';
 import useStore from '../store';
 import TestCreating from './testCreating/testCreating';
 
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
+
 function CreateTestPage() {
     const { userInfo } = useStore();
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = 'http://localhost:3000';
+            window.location.href = `${clientUrl}`;
         }
     }, [])
 

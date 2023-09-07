@@ -7,6 +7,9 @@ import './testDetails.scss';
 import Resulst from "./results/results";
 import Header from "./header/header";
 import Update from "./update/update";
+
+const clientUrl = process.env.REACT_APP_CLIENT_URL;
+
 function TestDetails({ test }) {
     const { setLoading, setMessage } = useStore();
     const { id } = useParams(); 
@@ -27,11 +30,11 @@ function TestDetails({ test }) {
         console.log(tokenInfo);
         console.log(testObject);
         if (testObject.createdBy !== tokenInfo.userId) {
-            window.location.href = 'http://localhost:3000';
+            window.location.href = `${clientUrl}`;
         } else if (testObject.message === 'No') {
             setMessage('Authorization has expired, you need to log in again');
             setTimeout(() => {
-                window.location.href = 'http://localhost:3000';
+                window.location.href = `${clientUrl}`;
             }, 500);
         }
         setLoading(false);

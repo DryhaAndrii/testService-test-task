@@ -1,8 +1,11 @@
 import axios from 'axios';
 import useStore from '../../store';
 import { useState } from 'react';
+
+const apiUrl = process.env.REACT_APP_API_URL;
+
 function RegistationForm() {
-    const { setMessage,setLoading } = useStore();
+    const { setMessage, setLoading } = useStore();
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -26,7 +29,7 @@ function RegistationForm() {
             setMessage('Passwords are not equal');
         } else {
             setLoading(true);
-            axios.post('http://localhost:3001/api/register', { login: formData.username, password: formData.password })
+            axios.post(`${apiUrl}register`, { login: formData.username, password: formData.password })
                 .then((response) => {
                     setMessage(response.data);
                     setLoading(false);

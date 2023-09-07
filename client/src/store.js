@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware'
 
 const useStore = create(devtools((set) => ({
+  serverLink: 'https://testserviceserver.onrender.com/',
   loading: false,
   userInfo: null,
   message: '',
