@@ -1,0 +1,14 @@
+[build]
+command = "npm run build"  
+publish = "client/build"  
+
+[build.environment]
+
+[[redirects]]
+from = "/api/*"
+to = "http://localhost:3001/api/:splat"
+status = 200
+
+[[functions]]
+directory = "server"  
+command = "npm run start" 
