@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const User = require('../models/userModel'); 
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const db = require('../db');
 
@@ -15,7 +16,7 @@ router.get('', async (req, res) => {
 
 
     try {
-        const decoded = await jwt.verify(token, 'kek');
+        const decoded = await jwt.verify(token, process.env.JWT_SECRET);
         const userId = decoded.userId;
 
         const user = await User.findById(userId);

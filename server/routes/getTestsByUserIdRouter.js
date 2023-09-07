@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Test = require('../models/testModel');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const db = require('../db');
 
@@ -13,7 +14,7 @@ router.get('', async (req, res) => {
             return res.status(401).json({ message: 'Token isnt exist' });
         }
 
-        const decodedToken = jwt.verify(token, 'kek');
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
         const userId = decodedToken.userId;
 

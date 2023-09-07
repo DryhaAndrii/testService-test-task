@@ -73,8 +73,8 @@ function Update({ testObject }) {
         setQuestions(updatedQuestions);
     };
     const handleAddQuestion = () => {
-        if (questions.length === 5) {
-            setMessage('Maximum number of questions is 5');
+        if (questions.length === 20) {
+            setMessage('Maximum number of questions is 20');
         } else {
             const newQuestion = {
                 questionText: '',

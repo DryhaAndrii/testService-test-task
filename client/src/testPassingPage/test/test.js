@@ -41,6 +41,14 @@ function Test({ test, id }) {
     };
 
     const handleSubmit = () => {
+        const isAllQuestionsAnswered = (test.questions || []).every((question, questionIndex) => {
+            return Object.keys(selectedAnswers[questionIndex] || {}).length > 0;
+        });
+
+        if (!isAllQuestionsAnswered) {
+            setMessage('You should answer all questions');
+            return;
+        }
         let totalScore = 0;
 
         (test.questions || []).forEach((question, questionIndex) => {
@@ -64,8 +72,8 @@ function Test({ test, id }) {
             .post('http://localhost:3001/api/test/saveTestResultsById', postData)
             .then((response) => {
                 setLoading(false);
-                setMessage(response.data.message);
-                setTimeout(() => { window.location.href = 'http://localhost:3000'; }, 500);
+                setMessage(`${response.data.message} Your score is ${score}`);
+                setTimeout(() => { window.location.href = 'http://localhost:3000'; }, 1000);
                 clearInterval(intervalId);
             })
             .catch((error) => {
@@ -79,7 +87,7 @@ function Test({ test, id }) {
             {(test.questions || []).map((question, questionIndex) => (
                 <Question
                     key={questionIndex}
-                    question={question} 
+                    question={question}
                     handleAnswerChange={handleAnswerChange}
                     selectedAnswers={selectedAnswers}
                     questionIndex={questionIndex}

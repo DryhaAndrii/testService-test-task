@@ -7,8 +7,8 @@ import './testPassingPage.scss';
 import TestPassingHeader from './header/testPassingHeader';
 
 function TestPassingPage() {
-    const { setLoading, setMessage } = useStore();
-    const { id } = useParams(); // Получаем значение id из URL
+    const { setLoading} = useStore();
+    const { id } = useParams(); 
     const [test, setTest] = useState({});
     useEffect(() => {
         fetchTest();

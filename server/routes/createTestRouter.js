@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const Test = require('../models/testModel');
 const User = require('../models/userModel');
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
 const db = require('../db');
 
@@ -11,7 +12,7 @@ router.post('', async (req, res) => {
     const { testName, questions } = req.body.testData;
     const token = req.body.token;
 
-    const decoded = await jwt.verify(token, 'kek');
+    const decoded = await jwt.verify(token, process.env.JWT_SECRET);
     const userId = decoded.userId;
 
     const user = await User.findOne({ _id: userId });

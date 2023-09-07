@@ -5,7 +5,7 @@ function Header({ testName, toogleResult }) {
         <header>
             <h1>{testName}</h1>
             <button onClick={toogleResult}>Toogle results</button>
-            <button onClick={() => { window.location.href = 'http://localhost:3000/testsDetails/'; }}>Cancel</button>
+            <button onClick={() => { window.location.href = 'http://localhost:3000/testsDetails/' }}>Cancel</button>
         </header>
     )
 }

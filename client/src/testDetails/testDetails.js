@@ -9,7 +9,7 @@ import Header from "./header/header";
 import Update from "./update/update";
 function TestDetails({ test }) {
     const { setLoading, setMessage } = useStore();
-    const { id } = useParams(); // Получаем значение id из URL
+    const { id } = useParams(); 
     const [testObject, setTestObject] = useState({});
     const [showResults, setShowResults] = useState(false);
     useEffect(() => {

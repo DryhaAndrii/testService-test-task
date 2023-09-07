@@ -11,8 +11,8 @@ function TestCreating() {
     });
 
     const addQuestion = () => {
-        if (testData.questions.length === 5) {
-            setMessage('Maximum number of questions is 5')
+        if (testData.questions.length === 20) {
+            setMessage('Maximum number of questions is 20')
         } else {
             const newQuestion = {
                 questionText: '',
@@ -31,7 +31,7 @@ function TestCreating() {
     };
     const handleDeleteQuestion = (questionIndex) => {
         const updatedQuestions = [...testData.questions];
-        updatedQuestions.splice(questionIndex, 1); // Remove the question at the specified index
+        updatedQuestions.splice(questionIndex, 1); 
 
         setTestData({
             ...testData,
