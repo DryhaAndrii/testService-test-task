@@ -133,11 +133,10 @@ function Update({ testObject }) {
     const deleteTest = async () => {
         try {
             const requestData = {
-                testId: testObject._id,
-                isDelete: true
+                testId: testObject._id
             };
             setLoading(true);
-            const response = await axios.post(`${apiUrl}test/updateTestById`, requestData);
+            const response = await axios.post(`${apiUrl}test/deleteTest`, requestData);
 
             if (response.status === 200) {
                 setLoading(false);

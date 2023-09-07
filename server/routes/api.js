@@ -11,6 +11,7 @@ const getTestByIdRouter = require('./getTestByIdRouter');
 const saveTestResultsById = require('./saveTestResultsById');
 const getTestsByUserId = require('./getTestsByUserIdRouter')
 const updateTestMyId = require('./updateTestById');
+const deleteTestRouter = require('./deleteTestRouter')
 
 router.use('/register', register);
 router.use('/login', login);
@@ -22,5 +23,6 @@ router.use('/test/getTestById', getTestByIdRouter);
 router.use('/test/saveTestResultsById', saveTestResultsById);
 router.use('/test/getTestsByUserId', getTestsByUserId);
 router.use('/test/updateTestById', updateTestMyId);
+router.use('/test/deleteTest', deleteTestRouter);
 module.exports = router;
 
