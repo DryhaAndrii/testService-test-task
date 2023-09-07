@@ -5,7 +5,7 @@ import Question from './question';
 const apiUrl = process.env.REACT_APP_API_URL;
 const clientUrl = process.env.REACT_APP_CLIENT_URL;
 function Test({ test, id }) {
-    const { setLoading, setMessage } = useStore();
+    const { setLoading, setMessage,setIsGoBack } = useStore();
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [timeElapsed, setTimeElapsed] = useState(0);
     const [intervalId, setIntervalId] = useState(null);
@@ -75,7 +75,7 @@ function Test({ test, id }) {
             .then((response) => {
                 setLoading(false);
                 setMessage(`${response.data.message} Your score is ${score}`);
-                setTimeout(() => { window.location.href = `${clientUrl}`; }, 1000);
+                setIsGoBack(true);
                 clearInterval(intervalId);
             })
             .catch((error) => {

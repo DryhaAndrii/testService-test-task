@@ -2,10 +2,11 @@ import { create } from 'zustand';
 import { devtools } from 'zustand/middleware'
 
 const useStore = create(devtools((set) => ({
-  serverLink: 'https://testserviceserver.onrender.com/',
+  isGoBack: false,
   loading: false,
   userInfo: null,
   message: '',
+  setIsGoBack: (boolean) => set({ isGoBack: boolean }),
   setLoading: (boolean) => set({ loading: boolean }),
   setUserInfo: (userInfo) => set({ userInfo: userInfo }),
   setMessage: (message) => set({ message: message }),
