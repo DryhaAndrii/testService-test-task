@@ -7,7 +7,7 @@ const clientUrl = process.env.REACT_APP_CLIENT_URL;
 const apiUrl = process.env.REACT_APP_API_URL;
 
 function TestCreating() {
-    const { setMessage, setLoading,setIsGoBack } = useStore();
+    const { setMessage, setLoading, setIsGoBack } = useStore();
     const [testData, setTestData] = useState({
         testName: '',
         questions: [],
@@ -66,9 +66,26 @@ function TestCreating() {
 
     const handleSubmit = () => {
         console.log(testData);
+
+        const hasEmptyFields = testData.questions.some(question => {
+            return (
+                question.questionText.trim() === '' ||
+                question.answers.some(answer => answer.answerText.trim() === '')
+            );
+        });
+
+        if (hasEmptyFields || testData.testName === '' || testData.description === '') {
+            setMessage('You can not send empty fields')
+            return; 
+        }
+        if (testData.questions.length === 0) {
+            setMessage('You can not create test with 0 questions');
+            return;
+        }
+
+
         const token = localStorage.getItem('token');
         const apiiUrl = `${apiUrl}test/create`;
-
         setLoading(true);
         axios
             .post(apiiUrl, { testData, token })

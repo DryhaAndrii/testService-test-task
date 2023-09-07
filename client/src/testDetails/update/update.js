@@ -68,6 +68,22 @@ function Update({ testObject }) {
     };
 
     const handleSave = async () => {
+        const hasEmptyFields = questions.some(question => {
+            return (
+                question.questionText.trim() === '' ||
+                question.answers.some(answer => answer.answerText.trim() === '')
+            );
+        });
+
+        if (hasEmptyFields || testName === '' || description === '') {
+            setMessage('You can not send empty fields')
+            return; 
+        }
+        if (questions.length === 0) {
+            setMessage('You can not create test with 0 questions');
+            return;
+        }
+
         try {
             const requestData = {
                 testId: testObject._id,
