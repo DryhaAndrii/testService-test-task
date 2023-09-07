@@ -10,8 +10,8 @@ const db = require('../db');
 router.post('', async (req, res) => {
 
     try {
-        const { testId} = req.body;
-
+        const { testId } = req.body;
+        console.log('deleting', testId);
         const deletedTest = await Test.deleteOne({ _id: testId });
 
         if (deletedTest.deletedCount === 0) {
