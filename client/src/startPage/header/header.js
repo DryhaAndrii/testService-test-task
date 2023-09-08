@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import useStore from "../../store";
 import { checkTokenExpire } from "../../helpers";
 
@@ -6,6 +6,7 @@ const clientUrl = process.env.REACT_APP_CLIENT_URL;
 
 function StartPageHeader() {
     const { userInfo, setMessage, setLoading } = useStore();
+    const [isShowPanel, setIsShowPanel] = useState(false);
     useEffect(() => {
 
     }, [])
@@ -47,6 +48,14 @@ function StartPageHeader() {
                 <button onClick={testsDetailsbuttonHandler}>Check my tests</button>
                 <button onClick={logOut}>Log out</button>
                 <p>Hello {userInfo.login}</p>
+
+                <button className="burgerButton" onClick={() => { setIsShowPanel(true) }}>&#9776;</button>
+                <div className={`hidedPanel${isShowPanel}`}>
+                    <button onClick={createTestButtonHandler}>Create test</button>
+                    <button onClick={testsDetailsbuttonHandler}>Check my tests</button>
+                    <button onClick={logOut}>Log out</button>
+                    <button onClick={() => { setIsShowPanel(false) }}>&#10799;</button>
+                </div>
             </>}
         </header>
     )

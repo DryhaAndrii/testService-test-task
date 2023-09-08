@@ -111,13 +111,13 @@
             left: 50%;
             transform: translateX(-50%) scale(1);
             bottom: 10px;
-        
+
             transition: background-color 0.1s, transform 0.1s;
-        
+
             &:hover {
                 transform: translateX(-50%) scale(1.10);
             }
-        
+
             &:active {
                 background-color: #000000d2;
                 transform: translateX(-50%) scale(0.9);
@@ -125,5 +125,23 @@
             }
         }
 
+    }
+}
+
+@media (max-width:768px) {
+    .authPage {
+        .form {
+            height: 90%;
+            width: 80%;
+        }
+    }
+}
+@media (max-width:310px) {
+    .authPage {
+        .form {
+            .cancelButton{
+                padding: 0px;
+            }
+        }
     }
 }

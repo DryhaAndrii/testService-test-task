@@ -90,3 +90,15 @@
         }
     }
 }
+@media (max-width:768px) {
+    .testsDetailsPage {
+        header {
+            h1{
+                font-size: 25px;
+            }
+            button{
+                padding: 4px 20px;
+            }
+        }
+    }
+}

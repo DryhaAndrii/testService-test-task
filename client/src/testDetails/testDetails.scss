@@ -247,3 +247,151 @@
         }
     }
 }
+
+@media (max-width:768px) {
+    .testDetails {
+        header {
+            justify-content: space-between;
+            width: 95%;
+
+            h1 {
+                font-size: 25px;
+                margin: 0px;
+            }
+
+            button {
+                padding: 4px 20px;
+                width: 30%;
+                font-size: 14px;
+            }
+        }
+
+        .inputs {
+            height: 8%;
+            width: 95%;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 3px;
+
+            input {
+                padding: 0px 10px;
+                width: 42%;
+                margin: 0px;
+                height: 100%;
+            }
+        }
+
+        .update {
+            width: 90%;
+
+            .question {
+                margin: 0px;
+                margin-bottom: 5px;
+                padding: 0px;
+
+                input {
+                    width: 80%;
+                    padding: 0px 10px;
+                    height: 10%;
+                }
+
+                .answer {
+                    width: 80%;
+
+                    input[type=checkbox] {
+                        width: 15px;
+                        height: 15px;
+                    }
+                }
+
+                button {
+                    width: 60%;
+                    padding: 0px 10px;
+                    margin: 0px;
+                    font-size: 15px;
+                }
+            }
+
+            .buttons {
+                justify-content: space-between;
+
+                button {
+                    width: 30%;
+                    font-size: 15px;
+                    margin: 0px;
+                }
+            }
+        }
+
+        .results {
+            width: 90%;
+
+            .result {
+                min-width: 220px;
+                height: 80%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+
+                p {
+                    margin: 0px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:420px) {
+    .testDetails {
+        header {
+            justify-content: space-between;
+            width: 95%;
+
+            h1 {
+                font-size: 25px;
+                margin: 0px;
+            }
+
+            button {
+                padding: 4px 0px;
+                width: 30%;
+            }
+        }
+
+        .inputs {
+            width: 95%;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        .update {
+            .question {
+                h1 {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:350px) {
+    .testDetails {
+        .update {
+            .buttons {
+                button {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:320px) {
+    .testDetails {
+        header {
+            h1 {
+                font-size: 15px;
+            }
+        }
+    }
+}

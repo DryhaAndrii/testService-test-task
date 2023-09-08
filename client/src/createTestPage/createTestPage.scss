@@ -5,6 +5,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: start;
+
     header {
         height: 10%;
         width: 100%;
@@ -83,5 +84,82 @@
         background-color: #00000029;
 
 
+    }
+}
+
+@media (max-width:768px) {
+    .createTestPage {
+        button {
+            &:hover {
+                transform: scale(1);
+                background-color: rgb(75 75 75);
+            }
+
+            &:active {
+                transform: scale(1);
+                background-color: rgb(75 75 75);
+            }
+        }
+
+        header {
+            h1 {
+                font-size: 25px;
+                margin: 0px;
+            }
+
+            button {
+                padding: 4px 20px;
+                width: 30%;
+            }
+        }
+
+        .testCreating {
+            height: 80%;
+            width: 85%;
+            padding: 10px;
+
+            input[type="text"] {
+                width: 90%;
+            }
+
+            .question {
+                width: 90%;
+                display: flex;
+                flex-direction: column;
+
+                .answer {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    height: 35px;
+                    margin-bottom: 5px;
+                    ;
+
+                    input[type="text"] {
+                        width: 80%;
+                        height: 100%;
+                        padding: 0px 10px;
+                        margin: 0px;
+                    }
+
+                    input[type="checkbox"] {
+                        margin: 0px;
+                        width: 20px;
+                        height: 20px;
+                    }
+                }
+
+                button {
+                    margin: 0px;
+                    height: 35px;
+                    width: 60%;
+                    margin: 0 auto;
+                }
+            }
+            button{
+                height: 30px;
+            }
+        }
     }
 }

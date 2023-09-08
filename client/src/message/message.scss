@@ -46,3 +46,28 @@
         }
     }
 }
+
+@media (max-width:768px) {
+    .messageContainer {
+
+        .message {
+            width: 50%;
+            height: 40%;
+            button{
+                width: 40%;
+            }
+        }
+    }
+}
+@media (max-width:550px) {
+    .messageContainer {
+
+        .message {
+            width: 70%;
+            height: 60%;
+            button{
+                width: 40%;
+            }
+        }
+    }
+}
