@@ -16,7 +16,7 @@ function Update({ testObject }) {
         }))
     );
     const handleTestNameChange = (e) => {
-        if (e.target.value.length > 50) {
+        if (e.target.value.length > 120) {
             setMessage('Too many characters')
         } else {
             setTestName(e.target.value);
@@ -24,14 +24,14 @@ function Update({ testObject }) {
     };
 
     const handleDescriptionChange = (e) => {
-        if (e.target.value.length > 50) {
+        if (e.target.value.length > 120) {
             setMessage('Too many characters')
         } else {
             setDescription(e.target.value);
         }
     };
     const handleQuestionChange = (index, e) => {
-        if (e.target.value.length > 50) {
+        if (e.target.value.length > 120) {
             setMessage('Too many characters');
         } else {
             const updatedQuestions = [...questions];
@@ -41,7 +41,7 @@ function Update({ testObject }) {
     };
 
     const handleAnswerChange = (questionIndex, answerIndex, e) => {
-        if (e.target.value.length > 50) {
+        if (e.target.value.length > 120) {
             setMessage('Too many characters');
         } else {
             const updatedQuestions = [...questions];

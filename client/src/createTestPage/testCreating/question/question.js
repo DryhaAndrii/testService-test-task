@@ -5,7 +5,7 @@ function Question({ testData, setTestData, question, questionIndex,handleDeleteQ
     const { setMessage } = useStore();
 
     const handleQuestionTextChange = (e, questionIndex) => {
-        if (e.target.value.length > 50) {
+        if (e.target.value.length > 120) {
             setMessage('Too many characters');
         } else {
             const updatedQuestions = [...testData.questions];

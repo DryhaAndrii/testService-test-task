@@ -3,7 +3,7 @@ function Answer({testData,setTestData, answer, answerIndex, questionIndex }) {
     const { setMessage } = useStore();
 
     const handleAnswerTextChange = (e, questionIndex, answerIndex) => {
-        if (e.target.value.length > 50) {
+        if (e.target.value.length > 120) {
             setMessage('Too many characters');
         } else {
             const updatedQuestions = [...testData.questions];

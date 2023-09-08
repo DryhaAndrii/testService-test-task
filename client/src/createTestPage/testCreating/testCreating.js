@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import axios from "axios";
 import Question from "./question/question";
 
-const clientUrl = process.env.REACT_APP_CLIENT_URL;
 const apiUrl = process.env.REACT_APP_API_URL;
 
 function TestCreating() {
@@ -44,7 +43,7 @@ function TestCreating() {
     };
 
     const handleTestNameChange = (e) => {
-        if (e.target.value.length > 50) {
+        if (e.target.value.length > 120) {
             setMessage('Too many characters');
         } else {
             setTestData({
@@ -54,7 +53,7 @@ function TestCreating() {
         }
     };
     const handleTestDescriptionChange = (e) => {
-        if (e.target.value.length > 50) {
+        if (e.target.value.length > 120) {
             setMessage('Too many characters');
         } else {
             setTestData({
