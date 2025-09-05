@@ -11,7 +11,9 @@
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-between;
+        padding: 0 24px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0));
 
         button {
             margin: 0px;
@@ -24,9 +26,11 @@
         height: 75%;
         width: 80%;
         padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #f9f9f9;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%), var(--color-surface);
+        color: var(--color-text);
+        box-shadow: var(--shadow-sm);
         overflow: auto;
         display: flex;
         flex-direction: column;
@@ -40,34 +44,25 @@
 
     input[type="text"] {
         width: 80%;
-        padding: 10px;
+        padding: 10px 12px;
         margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-sm);
+        background: var(--color-surface);
+        color: var(--color-text);
     }
 
     button {
         margin-top: 10px;
-        background-color: #000000b4;
-        border: none;
-        border-radius: 5px;
-        transition: transform 0.1s;
-        cursor: pointer;
-        font-size: 17px;
-        text-shadow: 0px 0px 3px rgb(255 255 255 / 72%);
-        color: white;
+        font-size: 16px;
     }
 
     button:hover {
-        background-color: #000000d2;
-        transform: scale(1.10);
-        border: none;
+        transform: translateY(-1px);
     }
 
     button:active {
-        transform: scale(0.99);
-        background-color: #000000;
-        border: none;
+        transform: translateY(0) scale(0.98);
     }
 
 
@@ -77,13 +72,12 @@
 
     .question {
         margin-top: 10px;
-        padding: 10px;
+        padding: 12px 14px;
         width: 80%;
-        border: 1px solid #00000036;
-        border-radius: 10px;
-        background-color: #00000029;
-
-
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%), var(--color-elevated);
+        box-shadow: var(--shadow-sm);
     }
 }
 
