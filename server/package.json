@@ -1,7 +1,11 @@
 {
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "dev":"node server.js",
-    "build":"npm i"
+    "start": "node server.js",
+    "dev": "node server.js",
+    "build": "npm i"
   },
   "dependencies": {
     "cors": "^2.8.5",
