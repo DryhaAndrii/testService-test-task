@@ -1,253 +1,253 @@
 .startPage {
-    height: 100%;
+  height: 100%;
 
+  header {
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0)
+    );
+
+    .burgerButton {
+      display: none;
+    }
+
+    .hidedPanelfalse {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(255 255 255 / 96%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 999;
+      transform: translateX(100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      button {
+        display: block;
+        margin-top: 10px;
+        width: 80%;
+      }
+    }
+
+    h1 {
+      margin: 0px;
+      color: var(--color-text);
+    }
+
+    a {
+      height: 50%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      text-decoration: none;
+      background: linear-gradient(
+        180deg,
+        var(--color-primary) 0%,
+        #4f8cff 100%
+      );
+      color: white;
+      text-shadow: 0px 0px 3px black;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      transition: transform 0.12s ease, box-shadow 0.12s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    a:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    a:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    p {
+      text-shadow: #00000096 0px 0px 4px;
+      font-size: 18px;
+      color: var(--color-text-muted);
+    }
+
+    button {
+      padding: 10px 16px;
+      font-size: 16px;
+    }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+
+    button:active {
+      transform: translateY(0) scale(0.98);
+    }
+  }
+
+  .tests {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #f1f1f1;
+
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #888;
+      border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #555;
+    }
+
+    .test {
+      width: 80%;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      margin: 10px;
+      background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04) 0%,
+          rgba(255, 255, 255, 0.02) 100%
+        ),
+        var(--color-surface);
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      color: var(--color-text);
+      box-shadow: var(--shadow-sm);
+
+      .right {
+        margin-left: 24px;
+        font-size: 18px;
+      }
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: var(--shadow-md);
+      }
+
+      &:active {
+        transform: translateY(0) scale(0.98);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .startPage {
     header {
-        height: 15%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 24px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0));
+      justify-content: space-between;
+      padding: 0px 30px;
 
-        .burgerButton {
-            display: none;
+      button {
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.7058823529);
+          transform: scale(1);
         }
 
-        .hidedPanelfalse {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgb(255 255 255 / 96%);
-            transition: transform 0.3s ease-in-out;
-            z-index: 999;
-            transform: translateX(100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            button {
-                display: block;
-                margin-top: 10px;
-                width: 80%;
-            }
+        &:active {
+          transform: scale(1);
+          background-color: rgba(0, 0, 0, 0.7058823529);
         }
-
-        h1 {
-            margin: 0px;
-            color: var(--color-text);
-        }
-
-        a {
-            height: 50%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            text-decoration: none;
-            background: linear-gradient(180deg, var(--color-primary) 0%, #4f8cff 100%);
-            color: var(--color-primary-contrast);
-            padding: 8px 14px;
-            border-radius: var(--radius-sm);
-            transition: transform .12s ease, box-shadow .12s ease;
-            box-shadow: var(--shadow-sm);
-        }
-
-        a:hover {
-            transform: translateY(-1px);
-            box-shadow: var(--shadow-md);
-        }
-
-        a:active {
-            transform: translateY(0) scale(0.98);
-        }
-
-        p {
-            font-size: 18px;
-            color: var(--color-text-muted);
-        }
-
-        button {
-            padding: 10px 16px;
-            font-size: 16px;
-        }
-        
-        button:hover {
-            transform: translateY(-1px);
-        }
-        
-        button:active {
-            transform: translateY(0) scale(0.98);
-        }
+      }
     }
 
     .tests {
-        height: 80%;
+      .test {
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media (max-width: 680px) {
+  .startPage {
+    header {
+      h1 {
+        font-size: 20px;
+      }
+
+      button {
+        padding: 10px 10px;
+      }
+
+      p {
+        margin: 0px;
+        font-size: 15px;
+      }
+    }
+
+    .tests {
+      .test {
+        margin: 10px 0px;
+      }
+    }
+  }
+}
+
+@media (max-width: 530px) {
+  .startPage {
+    header {
+      button {
+        display: none;
+      }
+
+      .hidedPaneltrue {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(255 255 255 / 96%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 999;
+        transform: translateX(0);
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 10px;
-        overflow: auto;
 
-        &::-webkit-scrollbar {
-            width: 10px;
+        button {
+          display: block;
+          margin-top: 10px;
+          width: 80%;
+        }
+      }
 
+      .burgerButton {
+        display: block;
+
+        &:hover {
+          transform: scale(1);
+          background-color: rgb(75 75 75);
         }
 
-        &::-webkit-scrollbar-track {
-            background-color: #f1f1f1;
-
-            border-radius: 5px;
+        &:active {
+          transform: scale(1);
+          background-color: rgb(75 75 75);
         }
-
-        &::-webkit-scrollbar-thumb {
-            background-color: #888;
-            border-radius: 5px;
-        }
-
-        &::-webkit-scrollbar-thumb:hover {
-            background-color: #555;
-        }
-
-
-
-        .test {
-            width: 80%;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-md);
-            margin: 10px;
-            background: linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.02) 100%), var(--color-surface);
-            padding: 14px 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            color: var(--color-text);
-            box-shadow: var(--shadow-sm);
-
-            .right {
-                margin-left: 24px;
-                font-size: 18px;
-            }
-
-            &:hover {
-                transform: translateY(-1px);
-                box-shadow: var(--shadow-md);
-
-
-            }
-
-            &:active {
-                transform: translateY(0) scale(0.98);
-            }
-        }
+      }
     }
-
-}
-
-@media (max-width:768px) {
-    .startPage {
-
-        header {
-            justify-content: space-between;
-            padding: 0px 30px;
-
-            button {
-                &:hover {
-                    background-color: rgba(0, 0, 0, 0.7058823529);
-                    transform: scale(1);
-
-
-                }
-
-                &:active {
-                    transform: scale(1);
-                    background-color: rgba(0, 0, 0, 0.7058823529);
-                }
-            }
-        }
-
-        .tests {
-            .test {
-                width: 90%;
-            }
-        }
-
-    }
-}
-
-@media (max-width:680px) {
-    .startPage {
-        header {
-            h1 {
-                font-size: 20px;
-            }
-
-            button {
-                padding: 10px 10px;
-            }
-
-            p {
-                margin: 0px;
-                font-size: 15px;
-            }
-        }
-
-        .tests {
-            .test {
-                margin: 10px 0px;
-            }
-        }
-
-    }
-}
-
-@media (max-width:530px) {
-    .startPage {
-        header {
-
-
-            button {
-                display: none;
-            }
-
-            .hidedPaneltrue {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgb(255 255 255 / 96%);
-                transition: transform 0.3s ease-in-out;
-                z-index: 999;
-                transform: translateX(0);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                button {
-                    display: block;
-                    margin-top: 10px;
-                    width: 80%;
-                }
-            }
-
-            .burgerButton {
-                display: block;
-
-                &:hover {
-                    transform: scale(1);
-                    background-color: rgb(75 75 75);
-                }
-
-                &:active {
-                    transform: scale(1);
-                    background-color: rgb(75 75 75);
-                }
-            }
-
-        }
-
-    }
+  }
 }
